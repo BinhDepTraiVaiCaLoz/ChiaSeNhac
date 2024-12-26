@@ -16,9 +16,12 @@
         <button id="play-pause"><i class="fas fa-play"></i></button>
         <button id="next"><i class="fas fa-forward"></i></button>
     </div>
-    {% comment %} <div class="progress-bar">
+    <div class="time">
+        <span id="current-time">0:00</span> / <span id="total-time">0:00</span>
+    </div>
+    <div class="progress-container">
         <input type="range" id="progress" value="0" max="100">
-    </div> {% endcomment %}
+    </div>
 </div>
 <audio id="audio"></audio>
 <script src="{% static 'app/js/main.js' %}"></script>

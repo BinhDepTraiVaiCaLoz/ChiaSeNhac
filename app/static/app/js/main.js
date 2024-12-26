@@ -71,3 +71,34 @@ audio.addEventListener('ended', nextSong);
 
 // Tải bài hát đầu tiên khi trang được mở
 loadSong(currentSongIndex);
+
+
+const currentTimeElement = document.getElementById('current-time');
+const totalTimeElement = document.getElementById('total-time');
+
+// Hàm định dạng thời gian (giây -> phút:giây)
+function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs < 10 ? '0' + secs : secs}`;
+}
+
+// Cập nhật thời gian hiện tại và tổng thời gian
+audio.addEventListener('timeupdate', () => {
+    currentTimeElement.textContent = formatTime(audio.currentTime);
+    totalTimeElement.textContent = formatTime(audio.duration || 0);
+});
+
+const progress = document.getElementById('progress');
+
+// Cập nhật tiến trình khi bài hát phát
+audio.addEventListener('timeupdate', () => {
+    const progressPercent = (audio.currentTime / audio.duration) * 100;
+    progress.value = progressPercent || 0;
+});
+
+// Tua bài hát khi kéo thanh tiến trình
+progress.addEventListener('input', () => {
+    const newTime = (progress.value / 100) * audio.duration;
+    audio.currentTime = newTime;
+});
