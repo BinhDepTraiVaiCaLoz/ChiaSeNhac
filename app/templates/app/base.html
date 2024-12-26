@@ -132,19 +132,17 @@
               </form>
               
               {% if request.user.is_authenticated %}
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                  <li class="nav-item dropdown">
-                    <span class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Xin chào, {{request.user}}
-                    </span>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">Trang cá nhân</a>
-                      <a class="dropdown-item" href="{% url 'logout' %}">Đăng xuất</a>
-                    </div>
-                  </li>
-                </ul>
-              </div>
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                  <span class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Xin chào, {{request.user}}
+                  </span>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Trang cá nhân</a>
+                    <a class="dropdown-item" href="{% url 'logout' %}">Đăng xuất</a>
+                  </div>
+                </li>
+              </ul>
               {% else %}
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">

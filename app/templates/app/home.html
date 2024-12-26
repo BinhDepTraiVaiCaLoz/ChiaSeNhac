@@ -2,6 +2,25 @@
 {% load static %}
 
 {% block home %}
-<h1> Đây là trang home </h1>
+
+
+
+<!-- Đây là thanh music bar -->
+<div class="music-bar">
+    <div class="song-info">
+        <h2 id="song-title">Song Title</h2>
+        <p id="artist-name">Artist Name</p>
+    </div>
+    <div class="controls">
+        <button id="prev"><i class="fas fa-backward"></i></button>
+        <button id="play-pause"><i class="fas fa-play"></i></button>
+        <button id="next"><i class="fas fa-forward"></i></button>
+    </div>
+    {% comment %} <div class="progress-bar">
+        <input type="range" id="progress" value="0" max="100">
+    </div> {% endcomment %}
+</div>
+<audio id="audio"></audio>
+<script src="{% static 'app/js/main.js' %}"></script>
 <script src="" async defer></script>
 {% endblock home %}
