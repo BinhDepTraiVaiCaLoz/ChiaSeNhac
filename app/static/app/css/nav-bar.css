@@ -1,3 +1,32 @@
 .navbar {
     background: linear-gradient(to left, white, #F0FFF0); /* Gradient từ trắng đến đen */
+    position: relative; /* Để dropdown có thể sử dụng z-index */
+    overflow: visible; /* Đảm bảo dropdown không bị cắt */
+    z-index: auto;
 }
+
+
+/* Dropdown Styles */
+.dropdown-menu {
+    position: absolute; /* Đảm bảo dropdown nằm trên */
+    z-index: 1100 !important; /* Cao hơn thanh Music Bar */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+  }
+  
+  /* Dropdown Items */
+  .dropdown-menu a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 15px;
+    display: block;
+  }
+  
+  .dropdown-menu a:hover {
+    background-color: #f0f0f0;
+    color: #007bff;
+  }
+
