@@ -61,8 +61,19 @@
                     Bài hát
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Việt Nam</a>
-                    <a class="dropdown-item" href="#">Âu Mỹ</a>
+                    {% for category in categories %}
+                    <div class="dropdown-item">
+                      <a href="#">{{category.name}}</a>
+
+                      {% if category.sub_categories.exists %}
+                        <ul class="submenu">
+                          {% for sub in category.sub_categories.all %}
+                            <li><a href="#">{{sub.name}}</a></li>
+                          {% endfor %}
+                        </ul>
+                      {% endif %}
+                    </div>
+                    {% endfor %}
                   </div>
                 </li>
                 <li class="nav-item dropdown">

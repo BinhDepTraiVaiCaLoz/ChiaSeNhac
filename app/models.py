@@ -18,4 +18,13 @@ class Playlist(models.Model):
 
     def __str__(self):
         return self.name
+    
+class Category(models.Model):
+    sub_category = models.ForeignKey('self', on_delete=models.CASCADE, related_name="sub_categories", null=True, blank=True)
+    is_sub = models.BooleanField(default=False)
+    name = models.CharField(max_length=50, null=True)
+    slug = models.CharField(max_length=50, unique=True)
 
+    def __str__(self):
+        return self.name
+    

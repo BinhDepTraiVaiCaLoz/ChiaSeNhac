@@ -43,6 +43,7 @@ def logoutPage(request):
 
 def home(request):
     playlists = Playlist.objects.filter(is_sub=False)
+    categories = Category.objects.filter(is_sub=False)
 
-    context = {'playlists':playlists}
+    context = {'playlists':playlists, 'categories': categories}
     return render(request,'app/home.html',context)

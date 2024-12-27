@@ -1,7 +1,7 @@
 // Đoạn mã JavaScript đã sửa
 const songs = [
-    { title: "Tái sinh", artist: "Tùng Dương", src: "static/app/audio/tai-sinh.mp3" },
     { title: "Những kẻ mộng mơ", artist: "Noo Phước Thịnh", src: "static/app/audio/nhung-ke-mong-mo.mp3" },
+    { title: "Tái sinh", artist: "Tùng Dương", src: "static/app/audio/tai-sinh.mp3" },
 ];
 
 let currentSongIndex = 0;
