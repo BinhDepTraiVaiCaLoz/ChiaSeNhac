@@ -1,8 +1,11 @@
 // Đoạn mã JavaScript đã sửa
 const songs = [
-    { title: "Những kẻ mộng mơ", artist: "Noo Phước Thịnh", src: "static/app/audio/nhung-ke-mong-mo.mp3" },
-    { title: "Tái sinh", artist: "Tùng Dương", src: "static/app/audio/tai-sinh.mp3" },
+    { title: "Những kẻ mộng mơ", artist: "Noo Phước Thịnh", src: "media/audio/nhung-ke-mong-mo.mp3" },
+    { title: "Tái sinh", artist: "Tùng Dương", src: "media/audio/tai-sinh.mp3" },
 ];
+
+
+
 
 let currentSongIndex = 0;
 
@@ -102,3 +105,22 @@ progress.addEventListener('input', () => {
     const newTime = (progress.value / 100) * audio.duration;
     audio.currentTime = newTime;
 });
+
+
+// Xem thêm nếu mô tả bài hát dài
+document.querySelectorAll(".toggle-text").forEach((btn) => {
+  btn.addEventListener("click", function () {
+    const cardText = this.previousElementSibling;
+    const isTruncated = cardText.classList.toggle("text-truncate");
+    const fullText = cardText.getAttribute("data-full-text");
+    if (!isTruncated) {
+      cardText.textContent = fullText; // Hiển thị đầy đủ nội dung
+      this.textContent = "Thu gọn";
+    } else {
+      cardText.textContent = fullText.substring(0, 100) + "..."; // Rút gọn nội dung
+      this.textContent = "Xem thêm";
+    }
+  });
+});
+
+

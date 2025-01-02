@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     'widget_tweaks',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +129,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILE_DIRS = [
     os.path.join(BASE_DIR,'static')
 ]
+
+# Cấu hình cho file media (chung)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'app/static/media')
+
+# Các URL con cho Audio và Ảnh
+AUDIO_URL = '/media/audio/'
+IMAGE_URL = '/media/images/'

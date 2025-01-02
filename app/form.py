@@ -1,6 +1,13 @@
 from django import forms
 from .models import *
 
+
+# Create your models here.
+class CreateUserForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['username','email','first_name','last_name','password1','password2']
+
 class RegistrationForm(forms.Form):
     username = forms.CharField(
         label='Username',
@@ -37,3 +44,4 @@ class PlaylistForm(forms.ModelForm):
         required=False,  # Nếu là playlist chính thì không cần chọn sub_playlist
         empty_label="Chọn playlist cha (nếu có)"
     )
+
