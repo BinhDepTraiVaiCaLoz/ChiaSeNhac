@@ -7,5 +7,5 @@ urlpatterns = [
     path('login/', views.loginPage, name="login"),
     path('register/', views.register, name="register"),
     path('logout/', views.logoutPage, name="logout"),
-    path('api/songs/', views.SongListAPI.as_view(), name='song-list-api'),
+    path('api/musics/', views.MusicListAPI.as_view(), name='music-list-api'),
 ]

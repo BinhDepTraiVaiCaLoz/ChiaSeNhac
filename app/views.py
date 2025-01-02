@@ -9,7 +9,7 @@ from django.contrib import messages
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
-
+from .serializers import MusicSerializer
 
 # Create your views here.
 def register(request):
@@ -54,9 +54,8 @@ def home(request):
     return render(request,'app/home.html',context)
 
 
-class SongListAPI(APIView):
+class MusicListAPI(APIView):
     def get(self, request):
-        # Lấy tất cả bài hát từ cơ sở dữ liệu
-        songs = Music.objects.all().values('name', 'artist', 'music_link', 'description')
-        return Response(list(songs))
-    
+        musics = Music.objects.all()  # Lấy toàn bộ bài hát
+        serializer = MusicSerializer(musics, many=True)
+        return Response(serializer.data)
