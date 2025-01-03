@@ -115,3 +115,20 @@ function formatTime(seconds) {
     const secs = Math.floor(seconds % 60);
     return `${mins}:${secs < 10 ? '0' + secs : secs}`;
 }
+
+const volumeSlider = document.getElementById('volume-slider');
+const volumeIcon = document.getElementById('volume-icon');
+
+// Cập nhật âm lượng khi kéo thanh trượt
+volumeSlider.addEventListener('input', () => {
+    audio.volume = volumeSlider.value;
+
+    // Cập nhật biểu tượng loa
+    if (audio.volume === 0) {
+        volumeIcon.innerHTML = '<i class="fas fa-volume-mute"></i>';
+    } else if (audio.volume <= 0.5) {
+        volumeIcon.innerHTML = '<i class="fas fa-volume-down"></i>';
+    } else {
+        volumeIcon.innerHTML = '<i class="fas fa-volume-up"></i>';
+    }
+});
