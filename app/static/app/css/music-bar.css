@@ -166,3 +166,24 @@
   background: #4caf50;
   transform: scale(1.2);
 }
+
+/* Nút "Chế độ" */
+#playBtn {
+  background-color: transparent; /* Màu nền ban đầu */
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s ease-in-out;
+}
+
+
+
+/* Hiệu ứng khi nút bị nhấn */
+#playBtn:active {
+  background-color: #5aa05d; /* Màu khi nhấn */
+  transform: scale(0.98); /* Thu nhỏ nút một chút khi nhấn */
+}

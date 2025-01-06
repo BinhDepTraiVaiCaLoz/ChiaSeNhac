@@ -1,6 +1,7 @@
 let songs = [];
 let currentSongIndex = 0;
 let isPlaying = false; // Trạng thái phát nhạc
+let mode = 'tuannu'; // Các chế độ: 'tuannu', 'random', 'repeat'
 
 // Lấy các phần tử từ DOM
 const audio = document.getElementById('audio');
@@ -12,6 +13,7 @@ const artistName = document.getElementById('artist-name');
 const currentTimeElement = document.getElementById('current-time');
 const totalTimeElement = document.getElementById('total-time');
 const progress = document.getElementById('progress');
+const playBtn = document.getElementById('playBtn');
 
 // Fetch songs from API
 fetch('/api/musics/')
@@ -132,3 +134,49 @@ volumeSlider.addEventListener('input', () => {
         volumeIcon.innerHTML = '<i class="fas fa-volume-up"></i>';
     }
 });
+
+
+
+
+
+// Chế độ phát nhạc
+function changeMode() {
+    // Chuyển qua các chế độ: 'tuannu', 'random', 'repeat'
+    if (mode === 'tuannu') {
+        mode = 'random';
+        playBtn.innerHTML = '<i class="fas fa-random"></i>';
+    } else if (mode === 'random') {
+        mode = 'repeat';
+        playBtn.innerHTML = '<i class="fas fa-redo-alt"></i>';
+    } else if (mode === 'repeat') {
+        mode = 'tuannu';
+        playBtn.innerHTML = '<i class="fas fa-list"></i>';
+    }
+    
+    // Khi thay đổi chế độ, cập nhật hành động phát nhạc
+    if (mode === 'random') {
+        currentSongIndex = Math.floor(Math.random() * songs.length);
+        playSong();
+    } else if (mode === 'repeat') {
+        audio.loop = true; // Lặp lại bài hát hiện tại
+        playSong();
+    } else {
+        audio.loop = false; // Tắt chế độ lặp lại
+        playSong();
+    }
+}
+
+// Chọn chế độ phát nhạc ngẫu nhiên
+audio.addEventListener('ended', () => {
+    if (mode === 'repeat') {
+        playSong(); // Lặp lại bài hát
+    } else if (mode === 'random') {
+        currentSongIndex = Math.floor(Math.random() * songs.length); // Chọn bài hát ngẫu nhiên
+        playSong();
+    } else {
+        nextSong(); // Tiến tới bài tiếp theo
+    }
+});
+
+
+playBtn.addEventListener('click', changeMode); // Đổi chế độ khi nhấn nút "Chế độ"
