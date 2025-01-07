@@ -59,3 +59,7 @@ class MusicListAPI(APIView):
         musics = Music.objects.all()  # Lấy toàn bộ bài hát
         serializer = MusicSerializer(musics, many=True)
         return Response(serializer.data)
+
+def accountInfo(request):
+    context = {}
+    return render(request, 'app/account-info.html',context)

@@ -8,4 +8,5 @@ urlpatterns = [
     path('register/', views.register, name="register"),
     path('logout/', views.logoutPage, name="logout"),
     path('api/musics/', views.MusicListAPI.as_view(), name='music-list-api'),
+    path('account-info/', views.accountInfo, name="account-info"),
 ]

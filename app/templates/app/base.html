@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="{% static 'app/css/main.css' %}"/>
         <link rel="stylesheet" href="{% static 'app/css/form.css' %}"/>
         <link rel="stylesheet" href="{% static 'app/css/music-bar.css' %}"/>
+        <link rel="stylesheet" href="{% static 'app/css/account-info.css' %}"/>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
         <!-- JS -->
@@ -164,7 +165,7 @@
                     Xin chào, {{request.user}}
                   </span>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Trang cá nhân</a>
+                    <a class="dropdown-item" href="{% url 'account-info' %}">Trang cá nhân</a>
                     <a class="dropdown-item" href="{% url 'logout' %}">Đăng xuất</a>
                   </div>
                 </li>
@@ -188,6 +189,9 @@
         {% block login %}{% endblock login %}
         <!-- Giao diện register -->
         {% block register %}{% endblock register %}
+
+        <!-- Giao diện Account Info -->
+        {% block account-info %}{% endblock account-info %}
 
 
         <!-- Giao diện footer -->
