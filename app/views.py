@@ -20,7 +20,11 @@ def register(request):
         if form.is_valid():
             form.save()
             return redirect('login')
-    context = {'form': form}
+        
+    playlists = Playlist.objects.filter(is_sub=False)
+    categories = Category.objects.filter(is_sub=False)
+
+    context = {'form': form, 'playlists': playlists, 'categories': categories}
     return render(request,'app/register.html',context)
 
 def loginPage(request):
@@ -37,7 +41,10 @@ def loginPage(request):
         else:
             messages.info(request,'User or password is invalid')
 
-    context = {}
+    playlists = Playlist.objects.filter(is_sub=False)
+    categories = Category.objects.filter(is_sub=False)
+
+    context = {'playlists': playlists, 'categories': categories}
     return render(request, 'app/login.html',context)
 
 def logoutPage(request):
@@ -61,5 +68,8 @@ class MusicListAPI(APIView):
         return Response(serializer.data)
 
 def accountInfo(request):
-    context = {}
+    playlists = Playlist.objects.filter(is_sub=False)
+    categories = Category.objects.filter(is_sub=False)
+
+    context = {'playlists': playlists, 'categories': categories}
     return render(request, 'app/account-info.html',context)
