@@ -2,14 +2,15 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from app.form import CreateUserForm
 from .models import *
-import json
-from django.contrib.auth.forms import UserCreationForm
+from .form import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import MusicSerializer
+
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def register(request):
@@ -68,8 +69,30 @@ class MusicListAPI(APIView):
         return Response(serializer.data)
 
 def accountInfo(request):
+    user = request.user
     playlists = Playlist.objects.filter(is_sub=False)
     categories = Category.objects.filter(is_sub=False)
+    profile = Profile.objects.get(user=user)
 
-    context = {'playlists': playlists, 'categories': categories}
+    imgProfileUrl = profile.imgProfileUrl
+
+    context = {'playlists': playlists, 'categories': categories, 'imgProfileUrl': imgProfileUrl}
     return render(request, 'app/account-info.html',context)
+
+
+@login_required
+def upload_avatar(request):
+    try:
+        profile = request.user.profile
+    except Profile.DoesNotExist:
+        profile = Profile.objects.create(user=request.user)
+
+    if request.method == 'POST':
+        form = AvatarUploadForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('account-info')  # Điều hướng về trang thông tin tài khoản
+    else:
+        form = AvatarUploadForm(instance=profile)
+
+    return render(request, 'account-info.html', {'form': form})

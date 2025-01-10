@@ -1,5 +1,7 @@
 {% extends 'app/base.html' %}
 
+{% load static %}
+
 {% block account-info %}
 <section class="h-100 gradient-custom-2">
     <div class="container py-5 h-100">
@@ -8,18 +10,28 @@
           <div class="card">
             <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
               <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
-                  alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
-                  style="width: 150px; z-index: 1">
-                <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-dark text-body" data-mdb-ripple-color="dark" style="z-index: 1;">
-                  Edit profile
-                </button>
+
+                {% if user.profile.imgProfileUrl %}
+                <img src="{{ user.profile.imgProfileUrl }}" alt="Avatar" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 150px;padding: 17px 0px; z-index: 100">
+                {% else %}
+                <img src="{% static 'media/avatar/noo.webp' %}" alt="Avatar Default" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 150px; padding: 17px 0px; z-index: 100">
+                {% endif %}
+
+                <form method="POST" enctype="multipart/form-data" style="z-index:1">
+                  {% csrf_token %}
+                  <input id="fileInput" type="file" name="avatar" accept="image/*" style="display: none;" onchange="this.form.submit()">
+                  <button type="submit" onclick="triggerFileInput()" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-dark text-body" data-mdb-ripple-color="dark" style="z-index: 1;">
+                    Upload Avatar
+                  </button>
+                </form>
               </div>
-              <div class="ms-3" style="margin-top: 130px;">
-                <h5>Andy Horwitz</h5>
+              <div class="ms-3 align-items-start profile-header" style="margin-top: 130px; margin-left: 22px;">
+                <h5>{{request.user.first_name}} {{request.user.last_name}}</h5>
                 <p>New York</p>
               </div>
             </div>
+            
+
             <div class="p-4 text-black bg-body-tertiary">
               <div class="d-flex justify-content-end text-center py-1 text-body">
                 <div>
@@ -65,4 +77,11 @@
       </div>
     </div>
 </section>
+
+<script>
+  function triggerFileInput() {
+    document.getElementById('fileInput').click();
+  }
+</script>
+
 {% endblock %}
