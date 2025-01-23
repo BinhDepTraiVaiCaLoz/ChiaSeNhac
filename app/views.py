@@ -20,8 +20,14 @@ def register(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "Đăng ký thành công!")
             return redirect('login')
-        
+        else:
+            if form.errors.get('username'):
+                messages.info(request, "Username đã tồn tại. Vui lòng chọn username khác.")
+    else:
+        form = CreateUserForm()
+
     playlists = Playlist.objects.filter(is_sub=False)
     categories = Category.objects.filter(is_sub=False)
 

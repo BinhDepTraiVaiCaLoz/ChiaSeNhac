@@ -28,7 +28,8 @@ class Profile(models.Model):
 
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):
-        instance.profile.save()
+        if hasattr(instance, 'profile'):  # Kiểm tra nếu User đã có Profile
+            instance.profile.save()
 
 class Playlist(models.Model):
     sub_playlist = models.ForeignKey('self', on_delete=models.CASCADE, related_name="sub_categories", null=True, blank=True)
