@@ -26,11 +26,6 @@ class CreateUserForm(UserCreationForm):
             )
         return user
 
-    def clean_username(self):
-        username = self.cleaned_data.get('username')
-        if User.objects.filter(username=username).exists():
-            raise forms.ValidationError("Username đã tồn tại. Vui lòng chọn username khác.")
-        return username
 
 class RegistrationForm(forms.Form):
     username = forms.CharField(
