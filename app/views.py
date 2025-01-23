@@ -21,6 +21,15 @@ def register(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Đăng ký thành công!")
+
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')  # Lấy password từ form
+            user = authenticate(username=username, password=password)  # Xác thực
+
+            if user is not None:
+                login(request, user)
+                return redirect('home')
+
             return redirect('home')
         else:
             if form.errors.get('username'):
