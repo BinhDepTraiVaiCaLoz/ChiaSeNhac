@@ -1,0 +1,104 @@
+/* Tổng thể section */
+section.vh-100 {
+    background: white; /* Gradient nền trắng sáng */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px; /* Tăng padding để làm nổi bật form */
+}
+
+/* Container */
+.container-fluid.h-custom {
+    background-color: rgba(255, 255, 255, 0.9); /* Nền trắng trong suốt nhẹ */
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Đổ bóng mềm mại */
+    padding: 60px; /* Tăng padding bên trong container */
+    max-width: 1200px; /* Đặt kích thước tối đa cho form */
+    width: 100%;
+}
+
+/* Hình ảnh minh họa */
+.container-fluid .img-fluid {
+    border-radius: 10px; /* Bo tròn góc ảnh */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng ảnh */
+    max-width: 100%;
+    height: auto;
+}
+
+/* Input fields */
+.form-control {
+    border: 1px solid #ddd; /* Viền nhẹ */
+    border-radius: 8px; /* Bo góc */
+    padding: 15px 20px; /* Tăng khoảng cách bên trong */
+    font-size: 18px; /* Tăng kích thước chữ */
+    transition: all 0.3s ease; /* Hiệu ứng hover */
+}
+.form-control:focus {
+    border-color: #53aa53; /* Viền xanh nhạt khi focus */
+    box-shadow: 0 0 8px rgba(240, 255, 240, 0.5); /* Hiệu ứng ánh sáng khi focus */
+}
+
+/* Labels */
+.form-label {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    font-size: 16px; /* Tăng kích thước chữ của nhãn */
+}
+
+/* Checkbox */
+.form-check-input {
+    accent-color: #F0FFF0; /* Màu xanh nhạt cho checkbox */
+}
+
+/* Button */
+.btn-primary {
+    background-color: #F0FFF0; /* Nền xanh nhạt gradient */
+    background: linear-gradient(to left, white, #F0FFF0); /* Gradient nút */
+    border: none;
+    border-radius: 8px; /* Bo góc */
+    padding: 15px 40px; /* Tăng kích thước nút */
+    font-size: 18px; /* Tăng kích thước chữ nút */
+    font-weight: bold;
+    color: #333; /* Chữ màu tối */
+    transition: all 0.3s ease; /* Hiệu ứng hover */
+}
+.btn-primary:hover {
+    background: linear-gradient(to left, #F0FFF0, white); /* Đảo màu gradient khi hover */
+    box-shadow: 0 4px 12px rgba(240, 255, 240, 0.5); /* Đổ bóng khi hover */
+    transform: translateY(-2px); /* Hiệu ứng nổi khi hover */
+}
+
+/* Link */
+.text-body {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.text-body:hover {
+    color: #b71c1c; /* Màu chuyển khi hover */
+    text-decoration: underline;
+}
+
+/* Link Register */
+.link-danger {
+    color: #d32f2f; /* Đỏ nhạt */
+    text-decoration: none;
+    font-weight: bold;
+}
+.link-danger:hover {
+    color: #b71c1c; /* Đỏ đậm hơn khi hover */
+    text-decoration: underline;
+}
+
+/* Padding và căn chỉnh cho màn hình nhỏ */
+@media (max-width: 768px) {
+    .container-fluid.h-custom {
+        padding: 30px; /* Điều chỉnh padding cho màn hình nhỏ */
+    }
+
+    .btn-primary {
+        width: 100%;
+        padding: 15px;
+    }
+}

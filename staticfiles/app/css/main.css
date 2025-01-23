@@ -1,0 +1,105 @@
+/* Đảm bảo html và body chiếm hết chiều cao */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Phần nội dung sẽ chiếm toàn bộ không gian còn lại */
+  .content {
+    flex-grow: 1; /* Đảm bảo phần nội dung phát triển để lấp đầy không gian */
+  }
+  
+  /* Phần footer */
+  footer {
+    background: linear-gradient(to left, #F0FFF0, white);
+    width: 100%;
+    padding: 2rem 0; /* Điều chỉnh padding nếu cần */
+  }
+  
+  footer .container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  footer .btn {
+    background-color: #54456b;
+    margin: 0 10px;
+  }
+  
+  footer .text-center {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    color: white;
+    text-align: center;
+  }
+
+  /* Ẩn menu mặc định */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  z-index: 1000;
+}
+
+/* Hiển thị menu khi hover */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Tùy chỉnh giao diện menu */
+.dropdown-menu li a {
+  color: #000;
+  text-decoration: none;
+  padding: 5px 15px;
+  display: block;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #f0f0f0;
+}
+
+
+.carousel-item .row {
+  display: flex;
+  justify-content: center; /* Canh giữa các card */
+  flex-wrap: nowrap; /* Ngăn việc xuống dòng */
+}
+
+.carousel-item .col-lg-4 {
+  flex: 0 0 auto; /* Đảm bảo các card giữ kích thước cố định */
+  max-width: 33.333%; /* Chiếm 1/3 chiều rộng hàng */
+  margin-right: 10px; /* Khoảng cách giữa các card */
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; /* Đảm bảo tất cả các thẻ card có chiều cao bằng nhau */
+}
+
+.card-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* Giới hạn hiển thị tối đa 4 dòng */
+  -webkit-box-orient: vertical;
+  line-clamp: 4; /* Thuộc tính chuẩn (không có tiền tố) */
+  box-orient: vertical; /* Để tương thích với các trình duyệt cũ hơn */
+}
+
+.btn.toggle-text {
+  margin-top: auto;
+}
+
+.card-img-top {
+  height: 200px; /* Chiều cao cố định cho ảnh */
+  width: 100%; /* Chiều rộng tự động theo card */
+  object-fit: cover; /* Đảm bảo ảnh giữ tỷ lệ và cắt phần dư */
+  border-radius: 0; /* Loại bỏ góc bo tròn (nếu có) */
+}
