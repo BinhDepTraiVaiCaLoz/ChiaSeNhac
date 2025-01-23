@@ -21,9 +21,6 @@ def register(request):
         if form.is_valid():
             form.save()
             return redirect('login')
-    else:
-        form = CreateUserForm()
-        return render(request, 'register.html', {'form': form})
         
     playlists = Playlist.objects.filter(is_sub=False)
     categories = Category.objects.filter(is_sub=False)
