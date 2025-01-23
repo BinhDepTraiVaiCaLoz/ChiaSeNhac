@@ -28,7 +28,7 @@ SECRET_KEY = decouple.config('SECRET_KEY')
 DEBUG = decouple.config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = decouple.config('ALLOWED_HOSTS', default='').split(',')
-
+CSRF_TRUSTED_ORIGINS = decouple.config('CSRF_TRUSTED_ORIGINS', default='').split(',')
 
 # Application definition
 
@@ -57,7 +57,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'chiasenhac.urls'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-CSRF_TRUSTED_ORIGINS = decouple.config('CSRF_TRUSTED_ORIGINS', default='').split(',')
+
 
 
 
