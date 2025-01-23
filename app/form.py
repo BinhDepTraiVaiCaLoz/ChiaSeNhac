@@ -20,11 +20,17 @@ class CreateUserForm(UserCreationForm):
         if commit:
             user.save()
             # Lưu ảnh đại diện vào Profile model
-            Profile.objects.create(
+            Profile.objects.get_or_create(
                 user=user,
                 profile_picture=self.cleaned_data.get('profile_picture')
             )
         return user
+
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        if User.objects.filter(username=username).exists():
+            raise forms.ValidationError("Username đã tồn tại. Vui lòng chọn username khác.")
+        return username
 
 class RegistrationForm(forms.Form):
     username = forms.CharField(
