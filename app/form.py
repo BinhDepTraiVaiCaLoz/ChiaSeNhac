@@ -26,7 +26,6 @@ class CreateUserForm(UserCreationForm):
             )
         return user
 
-
 class RegistrationForm(forms.Form):
     username = forms.CharField(
         label='Username',
