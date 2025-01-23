@@ -20,10 +20,14 @@ class CreateUserForm(UserCreationForm):
         if commit:
             user.save()
             # Lưu ảnh đại diện vào Profile model
-            Profile.objects.get_or_create(
-                user=user,
-                profile_picture=self.cleaned_data.get('profile_picture')
-            )
+
+            profile = Profile.objects.get_or_create(user=user)
+            profile_picture = self.cleaned_data.get('profile_picture')
+
+            if profile_picture:
+                profile.profile_picture = profile_picture
+                profile.save()
+                
         return user
 
 class RegistrationForm(forms.Form):
