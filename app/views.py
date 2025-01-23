@@ -21,7 +21,7 @@ def register(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Đăng ký thành công!")
-            return redirect('login')
+            return redirect('home')
         else:
             if form.errors.get('username'):
                 messages.info(request, "Username đã tồn tại. Vui lòng chọn username khác.")
