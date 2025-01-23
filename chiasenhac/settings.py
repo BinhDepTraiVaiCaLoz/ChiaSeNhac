@@ -57,6 +57,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'chiasenhac.urls'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+CSRF_TRUSTED_ORIGINS = decouple.config('CSRF_TRUSTED_ORIGINS', default='').split(',')
+
+
 
 TEMPLATES = [
     {
