@@ -59,7 +59,15 @@
               <p class="small fw-bold mt-2 pt-1 mb-0">Do have an account? <a href="{% url 'login' %}"
                   class="link-danger">Login</a></p>
             </div>
-  
+            {% if form.errors %}
+                <ul>
+                    {% for field, errors in form.errors.items %}
+                        {% for error in errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
           </form>
         </div>
       </div>
