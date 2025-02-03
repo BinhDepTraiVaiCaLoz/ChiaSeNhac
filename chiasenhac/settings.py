@@ -24,8 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = decouple.config('SECRET_KEY')
 DEBUG = decouple.config('DEBUG', default=False, cast=bool)
-ALLOWED_HOSTS = decouple.config('ALLOWED_HOSTS', default='').split(',')
-CSRF_TRUSTED_ORIGINS = decouple.config('CSRF_TRUSTED_ORIGINS', default='').split(',')
+ALLOWED_HOSTS = decouple.config('ALLOWED_HOSTS', default='127.0.0.1,localhost').split(',')
+CSRF_TRUSTED_ORIGINS = decouple.config('CSRF_TRUSTED_ORIGINS', default='127.0.0.1,localhost').split(',')
 
 # Application definition
 
